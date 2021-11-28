@@ -4,6 +4,7 @@ on:
     branches: [ main ]
 jobs:
   unit_test_and_lint:
+    name: Run Unit Tests and Lint
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -21,3 +22,27 @@ jobs:
         run: npm run build
       - name: Run Test
         run: npm run test
+  release:
+    name: Deploy to heroku
+    needs: unit_test_and_lint
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@master
+    - name: login
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:login
+    - name: push
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:push -a accounts-manager web
+    - name: release
+      uses: actions/heroku@master
+      env:
+        HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
+      with:
+        args: container:release -a accounts-manager web
