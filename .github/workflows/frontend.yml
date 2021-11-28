@@ -1,4 +1,4 @@
-name: Run Unit Tests and Lint Files
+name: Frontend Jobs
 on:
   push:
     branches: [ main ]
