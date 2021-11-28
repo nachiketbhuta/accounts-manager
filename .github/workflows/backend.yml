@@ -26,7 +26,7 @@ jobs:
         run: mvn -B test --file pom.xml
   release:
     name: Deploy to Heroku
-    needs: unit_test_and_lint
+    needs: tests
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
