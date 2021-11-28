@@ -9,15 +9,15 @@ jobs:
       run:
         working-directory: ./app
     steps:
-      - uses: actions/checkout@v2
       - name: Check out repository
-      - uses: actions/setup-node@v1
+        uses: actions/checkout@v2
       - name: Set up Node.js
-      - with: 
+        uses: actions/setup-node@v1
+        with: 
           node-version: 12
       - name: Run CI
-      - run: npm ci
+        run: npm ci
       - name: Run Build
-      - run: npm run build
+        run: npm run build
       - name: Run Test
-      - run: npm test
+        run: npm test
