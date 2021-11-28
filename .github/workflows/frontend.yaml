@@ -1,0 +1,13 @@
+name: Run Unit Tests and Lint Files
+on: ["push"]
+jobs:
+  unit_test_and_lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v2
+      - working-directory: ./frontend
+      - run: |
+              npm ci
+              npm run build
+              npm run test:unit
+              npm run lint
