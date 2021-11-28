@@ -15,6 +15,7 @@
 	<description>Personal Accounts Manager</description>
 	<properties>
 		<java.version>11</java.version>
+		<docker.image.prefix>accounts-manager</docker.image.prefix>
 	</properties>
 	<dependencies>
 		<dependency>
