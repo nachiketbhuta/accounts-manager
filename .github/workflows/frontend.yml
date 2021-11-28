@@ -18,8 +18,6 @@ jobs:
           node-version: 12
       - name: Run CI
         run: npm ci
-      - name: Run Build
-        run: npm run build
       - name: Run Test
         run: npm run test
   release:
